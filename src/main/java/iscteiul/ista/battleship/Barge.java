@@ -16,6 +16,11 @@ public class Barge extends Ship {
         getPositions().add(new Position(pos.getRow(), pos.getColumn()));
     }
 
+    /**
+     * Retorna o tamanho da barca (número de células que ocupa).
+     *
+     * @return tamanho do navio (1)
+     */
     @Override
     public Integer getSize() {
         return SIZE;

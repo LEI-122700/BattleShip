@@ -8,8 +8,11 @@ public class Galleon extends Ship {
     private static final String NAME = "Galeao";
 
     /**
-     * @param bearing
-     * @param pos
+     * Construtor do Galleon.
+     *
+     * @param bearing - direção (orientação) do galeão (NORTE, SUL, ESTE, OESTE)
+     * @param pos     - posição inicial (geralmente o canto superior esquerdo da forma)
+     * @throws IllegalArgumentException se a direção for inválida
      */
     public Galleon(Compass bearing, IPosition pos) throws IllegalArgumentException {
         super(Galleon.NAME, bearing, pos);
@@ -46,6 +49,18 @@ public class Galleon extends Ship {
         return Galleon.SIZE;
     }
 
+    /**
+     * Define a forma do galeão quando está virado a NORTE.
+
+     * O formato parece um “T” invertido:
+
+     *   ■ ■ ■
+     *     ■
+     *     ■
+
+     * As três primeiras posições estão na linha base,
+     * e as duas seguintes descem na coluna do meio.
+     */
     private void fillNorth(IPosition pos) {
         for (int i = 0; i < 3; i++) {
             getPositions().add(new Position(pos.getRow(), pos.getColumn() + i));
@@ -54,6 +69,15 @@ public class Galleon extends Ship {
         getPositions().add(new Position(pos.getRow() + 2, pos.getColumn() + 1));
     }
 
+    /**
+     * Define a forma do galeão quando está virado a SUL.
+
+     * O formato é semelhante ao NORTE, mas invertido verticalmente:
+
+     *     ■
+     *     ■
+     *   ■ ■ ■
+     */
     private void fillSouth(IPosition pos) {
         for (int i = 0; i < 2; i++) {
             getPositions().add(new Position(pos.getRow() + i, pos.getColumn()));
@@ -63,6 +87,15 @@ public class Galleon extends Ship {
         }
     }
 
+    /**
+     * Define a forma do galeão quando está virado a ESTE.
+
+     * O formato é um “T” deitado para a direita:
+
+     *   ■
+     *   ■ ■ ■
+     *   ■
+     */
     private void fillEast(IPosition pos) {
         getPositions().add(new Position(pos.getRow(), pos.getColumn()));
         for (int i = 1; i < 4; i++) {
@@ -71,6 +104,15 @@ public class Galleon extends Ship {
         getPositions().add(new Position(pos.getRow() + 2, pos.getColumn()));
     }
 
+    /**
+     * Define a forma do galeão quando está virado a OESTE.
+
+     * O formato é um “T” deitado para a esquerda:
+
+     *     ■
+     *   ■ ■ ■
+     *     ■
+     */
     private void fillWest(IPosition pos) {
         getPositions().add(new Position(pos.getRow(), pos.getColumn()));
         for (int i = 1; i < 4; i++) {
