@@ -98,8 +98,8 @@ public class Galleon extends Ship {
      */
     private void fillEast(IPosition pos) {
         getPositions().add(new Position(pos.getRow(), pos.getColumn()));
-        for (int i = 1; i < 4; i++) {
-            getPositions().add(new Position(pos.getRow() + 1, pos.getColumn() + i - 3));
+        for (int i = 0; i < 3; i++) {
+            getPositions().add(new Position(pos.getRow() + 1, pos.getColumn() + i));
         }
         getPositions().add(new Position(pos.getRow() + 2, pos.getColumn()));
     }
@@ -109,16 +109,16 @@ public class Galleon extends Ship {
 
      * O formato é um “T” deitado para a esquerda:
 
-     *     ■
+     *       ■
      *   ■ ■ ■
-     *     ■
+     *       ■
      */
     private void fillWest(IPosition pos) {
-        getPositions().add(new Position(pos.getRow(), pos.getColumn()));
-        for (int i = 1; i < 4; i++) {
-            getPositions().add(new Position(pos.getRow() + 1, pos.getColumn() + i - 1));
+        getPositions().add(new Position(pos.getRow() - 1, pos.getColumn() + 2));
+        for (int i = 0; i < 3; i++) {
+            getPositions().add(new Position(pos.getRow(), pos.getColumn() + i));
         }
-        getPositions().add(new Position(pos.getRow() + 2, pos.getColumn()));
+        getPositions().add(new Position(pos.getRow() + 1, pos.getColumn() + 2));
     }
 
 }
