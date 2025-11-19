@@ -1,115 +1,82 @@
-// src/test/java/iscteiul/ista/battleship/CarrackTest.java
 package iscteiul.ista.battleship;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@DisplayName("Testes da classe Carrack (Nau, tamanho 3)")
+@DisplayName("Testes para a classe Carrack (Nau - Tamanho 3)")
 class CarrackTest {
 
+    private final Position POS_INICIAL = new Position(4, 4); // row=4, col=4
+
     @Test
-    @DisplayName("getSize() deve retornar 3")
+    @DisplayName("1. Verificar o tamanho constante do navio (SIZE=3)")
     void testGetSize() {
-        Carrack carrack = new Carrack(Compass.NORTH, new Position(0, 0));
-        assertEquals(3, carrack.getSize());
+        Carrack carrack = new Carrack(Compass.NORTH, POS_INICIAL);
+        assertEquals(3, carrack.getSize(), "O tamanho da Carrack deve ser 3");
     }
 
     @Test
-    @DisplayName("Carrack orientada a NORTH ocupa 3 posições verticais")
-    void testNorthPositions() {
-        Position pos = new Position(2, 5);
-        Carrack carrack = new Carrack(Compass.NORTH, pos);
-
-        assertEquals(3, carrack.getPositions().size());
-
-        IPosition p1 = carrack.getPositions().get(0);
-        IPosition p2 = carrack.getPositions().get(1);
-        IPosition p3 = carrack.getPositions().get(2);
-
-        assertAll(
-                () -> assertEquals(2, p1.getRow()),
-                () -> assertEquals(5, p1.getColumn()),
-                () -> assertEquals(3, p2.getRow()),
-                () -> assertEquals(5, p2.getColumn()),
-                () -> assertEquals(4, p3.getRow()),
-                () -> assertEquals(5, p3.getColumn())
-        );
+    @DisplayName("2. Testar exceções no construtor")
+    void testConstructorExceptions() {
+        // Cobre a linha do 'if (bearing == null)'
+        assertThrows(AssertionError.class, () -> {
+            new Carrack(null, POS_INICIAL);
+        }, "Deve lançar AssertionError se bearing for null");
     }
 
-    @Test
-    @DisplayName("Carrack orientada a SOUTH ocupa 3 posições verticais")
-    void testSouthPositions() {
-        Position pos = new Position(1, 1);
-        Carrack carrack = new Carrack(Compass.SOUTH, pos);
+    @Nested
+    @DisplayName("3. Testar o preenchimento das 3 posições conforme a direção")
+    class CarrackShapeTests {
 
-        assertEquals(3, carrack.getPositions().size());
+        @Test
+        @DisplayName("3.1. Direção NORTH")
+        void testPositionsNorth() {
+            Carrack carrack = new Carrack(Compass.NORTH, POS_INICIAL);
+            assertAll("Verificar posições NORTH",
+                    () -> assertTrue(carrack.getPositions().contains(new Position(4, 4))),
+                    () -> assertTrue(carrack.getPositions().contains(new Position(5, 4))),
+                    () -> assertTrue(carrack.getPositions().contains(new Position(6, 4))),
+                    () -> assertEquals(3, carrack.getPositions().size())
+            );
+        }
 
-        IPosition p1 = carrack.getPositions().get(0);
-        IPosition p2 = carrack.getPositions().get(1);
-        IPosition p3 = carrack.getPositions().get(2);
+        @Test
+        @DisplayName("3.2. Direção SOUTH")
+        void testPositionsSouth() {
+            Carrack carrack = new Carrack(Compass.SOUTH, POS_INICIAL);
+            assertAll("Verificar posições SOUTH",
+                    () -> assertTrue(carrack.getPositions().contains(new Position(4, 4))),
+                    () -> assertTrue(carrack.getPositions().contains(new Position(5, 4))),
+                    () -> assertTrue(carrack.getPositions().contains(new Position(6, 4))),
+                    () -> assertEquals(3, carrack.getPositions().size())
+            );
+        }
 
-        assertAll(
-                () -> assertEquals(1, p1.getRow()),
-                () -> assertEquals(1, p1.getColumn()),
-                () -> assertEquals(2, p2.getRow()),
-                () -> assertEquals(1, p2.getColumn()),
-                () -> assertEquals(3, p3.getRow()),
-                () -> assertEquals(1, p3.getColumn())
-        );
+        @Test
+        @DisplayName("3.3. Direção EAST")
+        void testPositionsEast() {
+            Carrack carrack = new Carrack(Compass.EAST, POS_INICIAL);
+            assertAll("Verificar posições EAST",
+                    () -> assertTrue(carrack.getPositions().contains(new Position(4, 4))),
+                    () -> assertTrue(carrack.getPositions().contains(new Position(4, 5))),
+                    () -> assertTrue(carrack.getPositions().contains(new Position(4, 6))),
+                    () -> assertEquals(3, carrack.getPositions().size())
+            );
+        }
+
+        @Test
+        @DisplayName("3.4. Direção WEST")
+        void testPositionsWest() {
+            Carrack carrack = new Carrack(Compass.WEST, POS_INICIAL);
+            assertAll("Verificar posições WEST",
+                    () -> assertTrue(carrack.getPositions().contains(new Position(4, 4))),
+                    () -> assertTrue(carrack.getPositions().contains(new Position(4, 5))),
+                    () -> assertTrue(carrack.getPositions().contains(new Position(4, 6))),
+                    () -> assertEquals(3, carrack.getPositions().size())
+            );
+        }
     }
-
-    @Test
-    @DisplayName("Carrack orientada a EAST ocupa 3 posições horizontais")
-    void testEastPositions() {
-        Position pos = new Position(4, 3);
-        Carrack carrack = new Carrack(Compass.EAST, pos);
-
-        assertEquals(3, carrack.getPositions().size());
-
-        IPosition p1 = carrack.getPositions().get(0);
-        IPosition p2 = carrack.getPositions().get(1);
-        IPosition p3 = carrack.getPositions().get(2);
-
-        assertAll(
-                () -> assertEquals(4, p1.getRow()),
-                () -> assertEquals(3, p1.getColumn()),
-                () -> assertEquals(4, p2.getRow()),
-                () -> assertEquals(4, p2.getColumn()),
-                () -> assertEquals(4, p3.getRow()),
-                () -> assertEquals(5, p3.getColumn())
-        );
-    }
-
-    @Test
-    @DisplayName("Carrack orientada a WEST ocupa 3 posições horizontais")
-    void testWestPositions() {
-        Position pos = new Position(7, 9);
-        Carrack carrack = new Carrack(Compass.WEST, pos);
-
-        assertEquals(3, carrack.getPositions().size());
-
-        IPosition p1 = carrack.getPositions().get(0);
-        IPosition p2 = carrack.getPositions().get(1);
-        IPosition p3 = carrack.getPositions().get(2);
-
-        assertAll(
-                () -> assertEquals(7, p1.getRow()),
-                () -> assertEquals(9, p1.getColumn()),
-                () -> assertEquals(7, p2.getRow()),
-                () -> assertEquals(10, p2.getColumn()),
-                () -> assertEquals(7, p3.getRow()),
-                () -> assertEquals(11, p3.getColumn())
-        );
-    }
-
-    @Test
-    @DisplayName("Caravel deve lançar AssertionError se bearing for null")
-    void testNullBearingThrowsException() {
-        assertThrows(AssertionError.class,
-                () -> new Caravel(null, new Position(1,1)));
-
-    }
-
 }
