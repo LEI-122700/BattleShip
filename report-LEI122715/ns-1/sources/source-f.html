@@ -1,0 +1,156 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > IPosition</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">iscteiul.ista.battleship</a>
+</div>
+
+<h1>Coverage Summary for Class: IPosition (iscteiul.ista.battleship)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">IPosition</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;/**
+&nbsp; *
+&nbsp; */
+&nbsp;package iscteiul.ista.battleship;
+&nbsp;
+&nbsp;/**
+&nbsp; * @author fba
+&nbsp; * /
+&nbsp;
+&nbsp;
+&nbsp;/**
+&nbsp; * Interface IPosition representa uma posição (ou célula)
+&nbsp; * no tabuleiro do jogo Battleship.
+&nbsp;
+&nbsp; * Cada posição tem coordenadas (linha e coluna) e um estado:
+&nbsp; *  - pode estar ocupada por parte de um navio;
+&nbsp; *  - pode ter sido atingida por um disparo;
+&nbsp; *  - pode estar vazia e ainda não atacada.
+&nbsp;
+&nbsp; * Esta interface define o &quot;contrato&quot; que qualquer classe concreta (ex: Position)
+&nbsp; * deve implementar para representar corretamente uma célula do tabuleiro.
+&nbsp; */
+&nbsp;public interface IPosition {
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Retorna o número da linha (row) desta posição.
+&nbsp;     *
+&nbsp;     * @return índice da linha no tabuleiro (geralmente de 0 a 9)
+&nbsp;     */
+&nbsp;    int getRow();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Retorna o número da coluna (column) desta posição.
+&nbsp;     *
+&nbsp;     * @return índice da coluna no tabuleiro (geralmente de 0 a 9)
+&nbsp;     */
+&nbsp;    int getColumn();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Compara esta posição com outro objeto para verificar se representam
+&nbsp;     * a mesma célula do tabuleiro (mesma linha e mesma coluna).
+&nbsp;     *
+&nbsp;     * @param other - outro objeto (geralmente outra IPosition)
+&nbsp;     * @return true se forem iguais; false caso contrário.
+&nbsp;     */
+&nbsp;    boolean equals(Object other);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Verifica se esta posição é **adjacente** a outra.
+&nbsp;
+&nbsp;     * Duas posições são adjacentes se estiverem lado a lado —
+&nbsp;     * vertical, horizontal ou diagonalmente.
+&nbsp;     *
+&nbsp;     * @param other - outra posição a comparar
+&nbsp;     * @return true se forem adjacentes; false caso contrário
+&nbsp;     */
+&nbsp;    boolean isAdjacentTo(IPosition other);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Marca esta posição como **ocupada** (por exemplo, quando um navio é colocado sobre ela).
+&nbsp;
+&nbsp;     * Depois de ocupada, `isOccupied()` deve retornar true.
+&nbsp;     */
+&nbsp;    void occupy();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Marca esta posição como **atingida por um disparo**.
+&nbsp;
+&nbsp;     * Normalmente chamada quando o jogador dispara para esta célula.
+&nbsp;     * Se a posição estiver ocupada por um navio, então é um acerto;
+&nbsp;     * caso contrário, é um tiro falhado.
+&nbsp;     */
+&nbsp;    void shoot();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Indica se esta posição está atualmente ocupada por um navio.
+&nbsp;     *
+&nbsp;     * @return true se houver parte de um navio nesta posição; false se estiver vazia
+&nbsp;     */
+&nbsp;    boolean isOccupied();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Indica se esta posição já foi atingida por um disparo.
+&nbsp;     *
+&nbsp;     * @return true se foi atingida; false caso contrário
+&nbsp;     */
+&nbsp;    boolean isHit();
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-11-19 20:36</div>
+</div>
+</body>
+</html>

@@ -240,4 +240,5 @@ public abstract class Ship implements IShip {
         return "[" + category + " " + bearing + " " + pos + "]";
     }
 
+
 }
