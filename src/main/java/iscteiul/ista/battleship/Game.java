@@ -27,6 +27,8 @@ public class Game implements IGame {
         shots = new ArrayList<>();
         countInvalidShots = 0;
         countRepeatedShots = 0;
+        countHits = 0;
+        countSinks = 0;
         this.fleet = fleet;
     }
 
@@ -119,12 +121,12 @@ public class Game implements IGame {
         return floatingShips.size();
     }
 
-    private boolean validShot(IPosition pos) {
+    public boolean validShot(IPosition pos) {
         return (pos.getRow() >= 0 && pos.getRow() <= Fleet.BOARD_SIZE && pos.getColumn() >= 0
                 && pos.getColumn() <= Fleet.BOARD_SIZE);
     }
 
-    private boolean repeatedShot(IPosition pos) {
+    public boolean repeatedShot(IPosition pos) {
         for (int i = 0; i < shots.size(); i++)
             if (shots.get(i).equals(pos))
                 return true;
