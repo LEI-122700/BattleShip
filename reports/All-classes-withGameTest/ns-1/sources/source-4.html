@@ -1,0 +1,200 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Compass</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">iscteiul.ista.battleship</a>
+</div>
+
+<h1>Coverage Summary for Class: Compass (iscteiul.ista.battleship)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Compass</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/13)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;/**
+&nbsp; *
+&nbsp; */
+&nbsp;package iscteiul.ista.battleship;
+&nbsp;
+&nbsp;/**
+&nbsp; * Enumeração Compass representa as possíveis direções (orientações)
+&nbsp; * que um navio pode ter no jogo Battleship.
+&nbsp;
+&nbsp; * As direções disponíveis são:
+&nbsp; *  - NORTH (&#39;n&#39;)
+&nbsp; *  - SOUTH (&#39;s&#39;)
+&nbsp; *  - EAST  (&#39;e&#39;)
+&nbsp; *  - WEST  (&#39;o&#39;)  ← (a letra “o” representa “oeste” em português)
+&nbsp; *  - UNKNOWN (&#39;u&#39;) caso a direção não seja reconhecida.
+&nbsp;
+&nbsp; * Esta enum facilita o manuseamento das orientações, evitando o uso
+&nbsp; * de strings ou caracteres soltos no código.
+&nbsp; *
+&nbsp; * @author fba
+&nbsp; */
+<b class="nc">&nbsp;public enum Compass {</b>
+<b class="nc">&nbsp;    NORTH(&#39;n&#39;), SOUTH(&#39;s&#39;), EAST(&#39;e&#39;), WEST(&#39;o&#39;), UNKNOWN(&#39;u&#39;);</b>
+&nbsp;
+&nbsp;    private final char c;
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Construtor da enumeração Compass.
+&nbsp;     * É chamado automaticamente para cada uma das constantes definidas acima.
+&nbsp;     *
+&nbsp;     * @param c - carácter que representa a direção (por exemplo, &#39;n&#39; para norte)
+&nbsp;     */
+<b class="nc">&nbsp;    Compass(char c) {</b>
+<b class="nc">&nbsp;        this.c = c;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Retorna o carácter associado a esta direção.
+&nbsp;     *
+&nbsp;     * @return o carácter (&#39;n&#39;, &#39;s&#39;, &#39;e&#39;, &#39;o&#39; ou &#39;u&#39;)
+&nbsp;     */
+&nbsp;    public char getDirection() {
+<b class="nc">&nbsp;        return c;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Sobrescreve o método toString() para devolver o carácter da direção.
+&nbsp;     * Assim, se fizeres System.out.println(Compass.NORTH), imprime &quot;n&quot;.
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="nc">&nbsp;        return &quot;&quot; + c;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Metodo auxiliar que converte um carácter (&#39;n&#39;, &#39;s&#39;, &#39;e&#39;, &#39;o&#39;)
+&nbsp;     * para o respetivo valor da enumeração Compass.
+&nbsp;     * Se o carácter não corresponder a nenhuma direção válida,
+&nbsp;     * devolve Compass.UNKNOWN.
+&nbsp;     * @param ch - carácter da direção
+&nbsp;     * @return a direção correspondente na enum Compass
+&nbsp;     */
+&nbsp;    static Compass charToCompass(char ch) {
+&nbsp;        Compass bearing;
+<b class="nc">&nbsp;        switch (ch) {</b>
+&nbsp;            case &#39;n&#39;:
+<b class="nc">&nbsp;                bearing = NORTH;</b>
+&nbsp;                break;
+&nbsp;            case &#39;s&#39;:
+<b class="nc">&nbsp;                bearing = SOUTH;</b>
+&nbsp;                break;
+&nbsp;            case &#39;e&#39;:
+<b class="nc">&nbsp;                bearing = EAST;</b>
+&nbsp;                break;
+&nbsp;            case &#39;o&#39;:
+<b class="nc">&nbsp;                bearing = WEST;</b>
+&nbsp;                break;
+&nbsp;            default:
+<b class="nc">&nbsp;                bearing = UNKNOWN;</b>
+&nbsp;        }
+&nbsp;
+<b class="nc">&nbsp;        return bearing;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-11-20 11:00</div>
+</div>
+</body>
+</html>
