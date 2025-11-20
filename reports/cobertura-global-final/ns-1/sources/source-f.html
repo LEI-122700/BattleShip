@@ -1,0 +1,160 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > IGame</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">iscteiul.ista.battleship</a>
+</div>
+
+<h1>Coverage Summary for Class: IGame (iscteiul.ista.battleship)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">IGame</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;/**
+&nbsp; *
+&nbsp; */
+&nbsp;package iscteiul.ista.battleship;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;/**
+&nbsp; * Interface IGame define o comportamento principal de um jogo de Battleship.
+&nbsp;
+&nbsp; * Fornece métodos para efetuar disparos, registar resultados
+&nbsp; * e obter estatísticas sobre o progresso da partida.
+&nbsp;
+&nbsp; * Esta interface representa a lógica geral do jogo:
+&nbsp; *  - gerir tiros efetuados,
+&nbsp; *  - contabilizar acertos e erros,
+&nbsp; *  - e acompanhar o estado dos navios.
+&nbsp; */
+&nbsp;public interface IGame {
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Realiza um disparo (tiro) sobre uma posição do tabuleiro.
+&nbsp;     *
+&nbsp;     * @param pos - posição onde o jogador dispara
+&nbsp;     * @return o navio atingido (IShip), se o disparo for um acerto,
+&nbsp;     *         ou null caso o tiro não atinja nenhum navio.
+&nbsp;     */
+&nbsp;    IShip fire(IPosition pos);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Retorna a lista de todas as posições onde já foram efetuados disparos.
+&nbsp;     *
+&nbsp;     * @return lista de posições (IPosition) já tentadas
+&nbsp;     */
+&nbsp;    List&lt;IPosition&gt; getShots();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Devolve o número total de disparos repetidos,
+&nbsp;     * ou seja, tiros efetuados em posições onde o jogador já tinha disparado antes.
+&nbsp;     *
+&nbsp;     * @return quantidade de disparos repetidos
+&nbsp;     */
+&nbsp;    int getRepeatedShots();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Devolve o número de disparos inválidos.
+&nbsp;     *
+&nbsp;     * Um disparo pode ser inválido se, por exemplo:
+&nbsp;     *  - estiver fora dos limites do tabuleiro;
+&nbsp;     *  - for feito numa posição inválida (nula);
+&nbsp;     *  - violar alguma regra do jogo.
+&nbsp;     *
+&nbsp;     * @return quantidade de disparos inválidos
+&nbsp;     */
+&nbsp;    int getInvalidShots();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Retorna o número total de tiros que acertaram em algum navio.
+&nbsp;     *
+&nbsp;     * @return quantidade de acertos (hits)
+&nbsp;     */
+&nbsp;    int getHits();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Retorna quantos navios foram completamente afundados até ao momento.
+&nbsp;     *
+&nbsp;     * @return número de navios afundados
+&nbsp;     */
+&nbsp;    int getSunkShips();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Retorna o número de navios que ainda estão &quot;a flutuar&quot;,
+&nbsp;     * ou seja, que ainda não foram totalmente destruídos.
+&nbsp;     *
+&nbsp;     * @return número de navios restantes
+&nbsp;     */
+&nbsp;    int getRemainingShips();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Imprime as posições dos disparos válidos (acertos e falhas)
+&nbsp;     * já efetuados no tabuleiro.
+&nbsp;     *
+&nbsp;     * Pode ser útil para depuração ou para mostrar o progresso do jogador.
+&nbsp;     */
+&nbsp;    void printValidShots();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Imprime o estado atual da frota no jogo,
+&nbsp;     * mostrando os navios e a sua condição (afundado, atingido, intacto, etc.).
+&nbsp;     */
+&nbsp;    void printFleet();
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-11-20 11:08</div>
+</div>
+</body>
+</html>

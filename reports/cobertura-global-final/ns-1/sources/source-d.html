@@ -1,0 +1,224 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > IShip</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">iscteiul.ista.battleship</a>
+</div>
+
+<h1>Coverage Summary for Class: IShip (iscteiul.ista.battleship)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+</tr>
+  <tr>
+    <td class="name">IShip$MockitoMock$cUtnhviy</td>
+  </tr>
+  <tr>
+    <td class="name">IShip$MockitoMock$cUtnhviy$auxiliary$1QipVBCl</td>
+  </tr>
+  <tr>
+    <td class="name">IShip$MockitoMock$cUtnhviy$auxiliary$3IuyVelU</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;/**
+&nbsp; *
+&nbsp; */
+&nbsp;package iscteiul.ista.battleship;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;/**
+&nbsp; * Interface IShip define o comportamento e as propriedades básicas
+&nbsp; * de um navio no jogo Battleship.
+&nbsp;
+&nbsp; * Cada navio tem:
+&nbsp; *  - um tipo (categoria),
+&nbsp; *  - uma orientação (bearing),
+&nbsp; *  - uma posição inicial,
+&nbsp; *  - e uma lista de posições (as células do tabuleiro que ocupa).
+&nbsp;
+&nbsp; * Esta interface garante que todos os tipos de navios
+&nbsp; * (ex: Barge, Galleon, etc.) partilham a mesma estrutura base.
+&nbsp; */
+&nbsp;public interface IShip {
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Retorna a categoria (ou nome) do navio.
+&nbsp;
+&nbsp;     * Exemplo: &quot;Barge&quot;, &quot;Galleon&quot;, &quot;Destroyer&quot;.
+&nbsp;     *
+&nbsp;     * @return nome ou tipo do navio
+&nbsp;     */
+&nbsp;    String getCategory();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Retorna o tamanho do navio, isto é,
+&nbsp;     * o número de posições (células) que ocupa no tabuleiro.
+&nbsp;     *
+&nbsp;     * @return tamanho do navio (número de células)
+&nbsp;     */
+&nbsp;    Integer getSize();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Retorna a lista de posições (IPosition) que este navio ocupa no tabuleiro.
+&nbsp;
+&nbsp;     * Cada posição representa uma parte do navio.
+&nbsp;     *
+&nbsp;     * @return lista de posições ocupadas pelo navio
+&nbsp;     */
+&nbsp;    List&lt;IPosition&gt; getPositions();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Retorna a posição de referência (geralmente a célula superior esquerda)
+&nbsp;     * usada para calcular as restantes posições do navio.
+&nbsp;     *
+&nbsp;     * @return posição inicial do navio
+&nbsp;     */
+&nbsp;    IPosition getPosition();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Retorna a direção (orientação) do navio no tabuleiro.
+&nbsp;
+&nbsp;     * As direções possíveis são as definidas na enum Compass:
+&nbsp;     * NORTH, SOUTH, EAST, WEST.
+&nbsp;     *
+&nbsp;     * @return orientação do navio
+&nbsp;     */
+&nbsp;    Compass getBearing();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Verifica se o navio ainda está &quot;a flutuar&quot;,
+&nbsp;     * ou seja, se ainda existe pelo menos uma parte não atingida.
+&nbsp;     *
+&nbsp;     * @return true se ainda tiver partes intactas; false se estiver completamente afundado
+&nbsp;     */
+&nbsp;    boolean stillFloating();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Retorna a coordenada da linha mais alta (menor valor de row)
+&nbsp;     * que o navio ocupa.
+&nbsp;
+&nbsp;     * Útil para cálculos de posição ou verificações de sobreposição.
+&nbsp;     *
+&nbsp;     * @return índice da linha superior
+&nbsp;     */
+&nbsp;    int getTopMostPos();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Retorna a coordenada da linha mais baixa (maior valor de row)
+&nbsp;     * que o navio ocupa.
+&nbsp;     *
+&nbsp;     * @return índice da linha inferior
+&nbsp;     */
+&nbsp;    int getBottomMostPos();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Retorna a coordenada da coluna mais à esquerda (menor valor de column)
+&nbsp;     * que o navio ocupa.
+&nbsp;     *
+&nbsp;     * @return índice da coluna esquerda
+&nbsp;     */
+&nbsp;    int getLeftMostPos();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Retorna a coordenada da coluna mais à direita (maior valor de column)
+&nbsp;     * que o navio ocupa.
+&nbsp;     *
+&nbsp;     * @return índice da coluna direita
+&nbsp;     */
+&nbsp;    int getRightMostPos();
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Verifica se o navio ocupa uma determinada posição do tabuleiro.
+&nbsp;     *
+&nbsp;     * @param pos - posição a verificar
+&nbsp;     * @return true se o navio ocupa essa posição; false caso contrário
+&nbsp;     */
+&nbsp;    boolean occupies(IPosition pos);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Verifica se este navio está demasiado próximo de outro navio.
+&nbsp;
+&nbsp;     * Normalmente, dois navios não podem estar lado a lado (nem encostados na diagonal),
+&nbsp;     * por isso esta função ajuda a validar a colocação no tabuleiro.
+&nbsp;     *
+&nbsp;     * @param other - outro navio
+&nbsp;     * @return true se os navios estiverem demasiado próximos; false se houver distância válida
+&nbsp;     */
+&nbsp;    boolean tooCloseTo(IShip other);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Verifica se o navio está demasiado próximo de uma posição específica.
+&nbsp;
+&nbsp;     * Usado para garantir que não há navios nem células ocupadas
+&nbsp;     * nas posições adjacentes durante a colocação.
+&nbsp;     *
+&nbsp;     * @param pos - posição a verificar
+&nbsp;     * @return true se estiver demasiado perto; false caso contrário
+&nbsp;     */
+&nbsp;    boolean tooCloseTo(IPosition pos);
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Regista um disparo sobre uma posição específica do navio.
+&nbsp;
+&nbsp;     * Marca essa posição como atingida (se for uma parte ocupada pelo navio).
+&nbsp;     *
+&nbsp;     * @param pos - posição onde o tiro foi efetuado
+&nbsp;     */
+&nbsp;    void shoot(IPosition pos);
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2025-11-20 11:08</div>
+</div>
+</body>
+</html>
