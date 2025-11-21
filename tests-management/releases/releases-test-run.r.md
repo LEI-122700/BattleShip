@@ -1,7 +1,7 @@
 # releases-test-run
 
 ## operations
-* [unknown] C1 CheckList
+* [passed] C1 CheckList @LEI-123292
     * relatórios de cobertura do codigo na pasta reports
     * executar testes unitarios no IntelliJ
     * verificar e atualizar a cobertura de codico antes de cada release
@@ -25,7 +25,7 @@
 
 * [passed] C5 CompassTest - teste char direções, tostring, válidos e devolve UNKOWN    @LEI-123279
 
-* [unknown] C6 FleetTest - adicionar navios válidos/fora dos limites, detetar colisões/proximidade, capacidade da frota, pesquisa (getShipsLike), shipAt, floatingShips, printStatus e casos nulos
+* [passed] C6 FleetTest - adicionar navios válidos/fora dos limites, detetar colisões/proximidade, capacidade da frota, pesquisa (getShipsLike), shipAt, floatingShips, printStatus e casos nulos @LEI-123292
     * 
 
 * [passed] C7 FrigateTest - test tamanho 4 e preenchimento das 4 posições nas direções NORTH, SOUTH, EAST e WEST    @LEI-122700
@@ -36,7 +36,7 @@
 
 * [passed] C10 PositionTest - testa construtor, equals/hashCode, isAdjacentTo, ocupar/disparar e toString    @LEI-123279
 
-* [unknown] C11 ShipTest - testa a criação de um barco genérico, registo de hit/miss, stillFloating, limites, toString e buildShip
+* [passed] C11 ShipTest - testa a criação de um barco genérico, registo de hit/miss, stillFloating, limites, toString e buildShip @LEI-123292
     tags: unit-tests, test-cases
 
 
