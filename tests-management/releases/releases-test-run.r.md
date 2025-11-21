@@ -8,17 +8,17 @@
 
 
 ## unit-test-cases
-* [unknown] C2 BargeTest
+* [passed] C2 BargeTest @LEI-122715
     * teste getSize(1)
     * teste singlePositionCreated
     * teste Bearing
 
-* [unknown] C3 CaravelTest
+* [passed] C3 CaravelTest @LEI-122715
     * teste getSize(2)
     * teste ConstructorExceptions
     * teste coordenadas(N,S,E,W)
 
-* [unknown] C4 CarrackTest
+* [passed] C4 CarrackTest @LEI-122715
     * teste getSize(3)
     * teste ConstructorExceptions
     * teste coordenadas(N,S,E,W)
